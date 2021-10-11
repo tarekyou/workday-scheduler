@@ -15,17 +15,38 @@ function loadTasks(){
     };
 }
 
-function addTasks(){
+
 $(".description").on("click", "tasksintextarea", function(){
     var text = $(this)
     .text()
     .trim();
     var textInput = $("<textarea>")
+    .addClass("textarea")
     .val(text);
     $(this).replaceWith(textInput);
-})   
+    textInput.trigger("focus");
+}) ;
 
-};
+
+$(".description").on("blur", "textarea", function() {
+    
+      var text = $(this)
+        .val()
+        .trim();
+      
+  
+      
+      var taskE = $("<textarea>")
+        .addClass("textarea")
+        .text(text);
+  
+      
+      $(this).replaceWith(taskE);
+    });  
+
+
+
+
 
 function changeColor(){
     // var time9 = "09:00";
