@@ -6,8 +6,26 @@ let tasks = [];
 function saveTasks(){
     localStorage.setItem("tasks", JSON.stringify(tasks))
 }
-
 $(".saveBtn").on("click", saveTasks());
+
+function loadTasks(){
+    JSON.parse(localStorage.getItem("tasks"))
+    if(!tasks){
+        tasks = {};
+    };
+}
+
+function addTasks(){
+$(".description").on("click", "tasksintextarea", function(){
+    var text = $(this)
+    .text()
+    .trim();
+    var textInput = $("<textarea>")
+    .val(text);
+    $(this).replaceWith(textInput);
+})   
+
+};
 
 function changeColor(){
     // var time9 = "09:00";
@@ -29,7 +47,6 @@ function changeColor(){
     // var time17 = "17:00";
     var time17M = moment(17, "HH");
     let checkHour= [time9M, time10M, time11M, time12M, time13M, time14M, time15M, time16M, time17M];
-    var current = moment();
     for (let i = 0; i < checkHour.length; i++) {
         if(moment().isAfter(checkHour[i])){
         $("textarea").addClass("past")
@@ -44,6 +61,7 @@ function changeColor(){
 
 }
 changeColor();
+setInterval(changeColor, 1000*60*30);
 
 
 
