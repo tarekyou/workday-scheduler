@@ -3,10 +3,13 @@ $("#currentDay").text(today);
 
 let tasks = [];
 
-function saveTasks(){
+function saveTasks(event){
+    var textAreaVal = $(this).siblings(".description").find(".textareas").val();
+    tasks.push(textAreaVal);
     localStorage.setItem("tasks", JSON.stringify(tasks))
+    
 }
-$(".saveBtn").on("click", saveTasks());
+$(".saveBtn").on("click", saveTasks);
 
 function loadTasks(){
     JSON.parse(localStorage.getItem("tasks"))
@@ -16,7 +19,7 @@ function loadTasks(){
 }
 
 
-$(".description").on("click", "tasksintextarea", function(){
+$(".description").on("click", "textareas", function(){
     var text = $(this)
     .text()
     .trim();
@@ -50,6 +53,7 @@ $(".description").on("blur", "textarea", function() {
 
 function changeColor(){
     // var time9 = "09:00";
+    var todayDate = moment();
     var time9M = moment(09, "HH");
     // var time10 = "10:00";
     var time10M = moment(10, "HH");
@@ -68,7 +72,10 @@ function changeColor(){
     // var time17 = "17:00";
     var time17M = moment(17, "HH");
     let checkHour= [time9M, time10M, time11M, time12M, time13M, time14M, time15M, time16M, time17M];
+    console.log(checkHour);
+    $("textarea").removeClass("future past present");
     for (let i = 0; i < checkHour.length; i++) {
+       
         if(moment().isAfter(checkHour[i])){
         $("textarea").addClass("past")
       }
