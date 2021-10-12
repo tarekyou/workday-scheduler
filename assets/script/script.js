@@ -72,11 +72,11 @@ $(".description").on("blur", "textarea", function() {
 
 
 
-
-
+    var currentHour = moment().hour();
+    console.log(currentHour);
 function changeColor(){
     // var time9 = "09:00";
-    var todayDate = moment();
+    
     var time9M = moment(09, "HH");
     // var time10 = "10:00";
     var time10M = moment(10, "HH");
@@ -110,10 +110,11 @@ function changeColor(){
     // $(textAreaIdEl[i]).removeClass("future past present");
     for (let i = 0; i < checkHour.length; i++) {
        
-        if(moment().isAfter(checkHour[i])){
-        $(textAreaIdEl[i]).addClass("past")
+        if(moment().isAfter(checkHour[i], 'hour')){
+        $(textAreaIdEl[i]).addClass("past");
+      
       }
-      else if(moment().isSame(checkHour[i])){
+      else if(moment().isSame(checkHour[i], 'hour')){
         $(textAreaIdEl[i]).addClass("present")
       }
       else{
@@ -123,6 +124,7 @@ function changeColor(){
     }
 
 }
+console.log(currentHour);
 changeColor();
 setInterval(changeColor, 1000*60*30);
 
