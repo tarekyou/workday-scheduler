@@ -95,19 +95,31 @@ function changeColor(){
     // var time17 = "17:00";
     var time17M = moment(17, "HH");
     let checkHour= [time9M, time10M, time11M, time12M, time13M, time14M, time15M, time16M, time17M];
+    let textAreaId9 = document.getElementById("9");
+    let textAreaId10 = document.getElementById("10");
+    let textAreaId11 = document.getElementById("11");
+    let textAreaId12 = document.getElementById("12");
+    let textAreaId13 = document.getElementById("13");
+    let textAreaId14 = document.getElementById("14");
+    let textAreaId15 = document.getElementById("15");
+    let textAreaId16 = document.getElementById("16");
+    let textAreaId17 = document.getElementById("17");
+    let textAreaIdEl = [textAreaId9, textAreaId10, textAreaId11, textAreaId12, textAreaId13, textAreaId14, textAreaId15, textAreaId16, textAreaId17];
+
     console.log(checkHour);
-    $("textarea").removeClass("future past present");
+    // $(textAreaIdEl[i]).removeClass("future past present");
     for (let i = 0; i < checkHour.length; i++) {
        
         if(moment().isAfter(checkHour[i])){
-        $("textarea").addClass("past")
+        $(textAreaIdEl[i]).addClass("past")
       }
       else if(moment().isSame(checkHour[i])){
-        $("textarea").addClass("present")
+        $(textAreaIdEl[i]).addClass("present")
       }
       else{
-        $("textarea").addClass("future")
-      }
+        $(textAreaIdEl[i]).addClass("future")
+      };
+      console.log(checkHour[i]);
     }
 
 }
@@ -223,7 +235,16 @@ setInterval(changeColor, 1000*60*30);
 
 
 
-
+// let textAreaId9 = document.getElementById("9");
+//     let textAreaId10 = document.getElementById("10");
+//     let textAreaId11 = document.getElementById("11");
+//     let textAreaId12 = document.getElementById("12");
+//     let textAreaId13 = document.getElementById("13");
+//     let textAreaId14 = document.getElementById("14");
+//     let textAreaId15 = document.getElementById("15");
+//     let textAreaId16 = document.getElementById("16");
+//     let textAreaId17 = document.getElementById("17");
+//     let textAreaIdEl = [textAreaId9, textAreaId10, textAreaId11, textAreaId12, textAreaId13, textAreaId14, textAreaId15, textAreaId16, textAreaId17];
 
 
 
