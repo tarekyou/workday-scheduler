@@ -4,12 +4,27 @@ $("#currentDay").text(today);
 let tasks = [];
 
 function saveTasks(event){
-    var textAreaVal = $(this).siblings(".description").find(".textareas").val();
-    tasks.push(textAreaVal);
-    localStorage.setItem("tasks", JSON.stringify(tasks))
+    console.log(event.target);
+    // console.log(this);
+
+    // var textAreaVal = $(this).siblings(".description").find("textarea").val();
+    // console.log(textAreaVal);
+    // var textAreaId = $(this).siblings(".description").children("textarea");
+    // console.log(textAreaId);
+    // tasks.push(textAreaVal);
+    // localStorage.setItem("tasks", JSON.stringify(tasks))
     
 }
-$(".saveBtn").on("click", saveTasks);
+$(".saveBtn").on("click", function(){
+    console.log(this);
+
+    var textAreaVal = $(this).siblings(".description").find("textarea").val();
+    console.log(textAreaVal);
+    var textAreaId = $(this).siblings(".description").attr("id");
+    console.log(textAreaId);
+    tasks.push(textAreaVal);
+    localStorage.setItem(textAreaId, textAreaVal);
+});
 
 function loadTasks(){
     JSON.parse(localStorage.getItem("tasks"))
@@ -17,7 +32,15 @@ function loadTasks(){
         tasks = {};
     };
 }
-
+$("#9").val(localStorage.getItem("nine"));
+$("#10").val(localStorage.getItem("ten"));
+$("#11").val(localStorage.getItem("eleven"));
+$("#12").val(localStorage.getItem("twelve"));
+$("#13").val(localStorage.getItem("thirteen"));
+$("#14").val(localStorage.getItem("fourteen"));
+$("#15").val(localStorage.getItem("fifteen"));
+$("#16").val(localStorage.getItem("sixteen"));
+$("#17").val(localStorage.getItem("seventeen"));
 
 $(".description").on("click", "textareas", function(){
     var text = $(this)
