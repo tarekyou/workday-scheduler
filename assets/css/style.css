@@ -15,8 +15,8 @@ textarea{
   padding: 10px;
 }
 .textareas{
-  width: 100%;
-  max-width: 100%;
+  
+  /* max-width: 100%; */
 }
 .jumbotron {
   text-align: center;

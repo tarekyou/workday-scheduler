@@ -18,7 +18,7 @@ function saveTasks(event){
 $(".saveBtn").on("click", function(){
     console.log(this);
 
-    var textAreaVal = $(this).siblings(".description").find("textarea").val();
+    var textAreaVal = $(this).siblings(".description").val();
     console.log(textAreaVal);
     var textAreaId = $(this).siblings(".description").attr("id");
     console.log(textAreaId);
@@ -32,43 +32,43 @@ function loadTasks(){
         tasks = {};
     };
 }
-$("#9").val(localStorage.getItem("nine"));
-$("#10").val(localStorage.getItem("ten"));
-$("#11").val(localStorage.getItem("eleven"));
-$("#12").val(localStorage.getItem("twelve"));
-$("#13").val(localStorage.getItem("thirteen"));
-$("#14").val(localStorage.getItem("fourteen"));
-$("#15").val(localStorage.getItem("fifteen"));
-$("#16").val(localStorage.getItem("sixteen"));
-$("#17").val(localStorage.getItem("seventeen"));
+$("#9").val(localStorage.getItem("9"));
+$("#10").val(localStorage.getItem("10"));
+$("#11").val(localStorage.getItem("11"));
+$("#12").val(localStorage.getItem("12"));
+$("#13").val(localStorage.getItem("13"));
+$("#14").val(localStorage.getItem("14"));
+$("#15").val(localStorage.getItem("15"));
+$("#16").val(localStorage.getItem("16"));
+$("#17").val(localStorage.getItem("17"));
 
-$(".description").on("click", "textareas", function(){
-    var text = $(this)
-    .text()
-    .trim();
-    var textInput = $("<textarea>")
-    .addClass("textarea")
-    .val(text);
-    $(this).replaceWith(textInput);
-    textInput.trigger("focus");
-}) ;
+// $(".description").on("click", function(){
+//     var text = $(this)
+//     .text()
+//     .trim();
+//     var textInput = $("<textarea>")
+//     .addClass("textarea")
+//     .val(text);
+//     $(this).replaceWith(textInput);
+//     textInput.trigger("focus");
+// }) ;
 
 
-$(".description").on("blur", "textarea", function() {
+// $(".description").on("blur", function() {
     
-      var text = $(this)
-        .val()
-        .trim();
+//       var text = $(this)
+//         .val()
+//         .trim();
       
   
       
-      var taskE = $("<textarea>")
-        .addClass("textarea")
-        .text(text);
+//       var taskE = $("<textarea>")
+//         .addClass("textarea")
+//         .text(text);
   
       
-      $(this).replaceWith(taskE);
-    });  
+//       $(this).replaceWith(taskE);
+//     });  
 
 
 
@@ -112,6 +112,7 @@ function changeColor(){
        
         if(moment().isAfter(checkHour[i], 'hour')){
         $(textAreaIdEl[i]).addClass("past");
+        // textAreaIdEl[i].readOnly = true;
       
       }
       else if(moment().isSame(checkHour[i], 'hour')){
