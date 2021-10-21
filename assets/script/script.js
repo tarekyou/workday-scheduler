@@ -112,7 +112,7 @@ function changeColor(){
        
         if(moment().isAfter(checkHour[i], 'hour')){
         $(textAreaIdEl[i]).addClass("past");
-        // textAreaIdEl[i].readOnly = true;
+        textAreaIdEl[i].readOnly = true;
       
       }
       else if(moment().isSame(checkHour[i], 'hour')){
